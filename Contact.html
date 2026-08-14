@@ -92,7 +92,6 @@
 
     <script>
       document.getElementById('contactForm').addEventListener('submit', function(e) {
-        e.preventDefault();
         
         //get function for each input field
         const name = document.getElementById('name').value
@@ -106,6 +105,8 @@
           convertedCost:(parseFloat(cost) * 2.75).toFixed(2) // Convert cost to cards
         };
 
+        print(formData) // For debugging purposes to check data frame. 
+
         // Replace with your actual Google Apps Script Deployment URL
         const apiUrl = 'https://script.google.com/macros/s/AKfycbzOlkUr75MlmwqrLZO97mcHZo1XfSI-BEOzkec7PNmnmXs9wIGyShqq6F_oeGpMkinjEg/exec';
         // Send the form data to the Google Sheet via the Google Apps Script
@@ -116,7 +117,7 @@
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(formData)
         })
-        .then(() => alert('Data successfully sent to Google Sheet!'))
+        .then(() => alert('Your request has been submitted to Mathnasium! Your center director will collect your cards and process your order.'), print('Form submitted successfully.'))
         .catch(error => console.error('Error:', error));
       });
     </script>
