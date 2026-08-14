@@ -102,9 +102,11 @@
 
         // Replace with your actual Google Apps Script Deployment URL
         const apiUrl = 'https://script.google.com/macros/s/AKfycbzOlkUr75MlmwqrLZO97mcHZo1XfSI-BEOzkec7PNmnmXs9wIGyShqq6F_oeGpMkinjEg/exec';
-
+        // Send the form data to the Google Sheet via the Google Apps Script
         fetch(apiUrl, {
           method: 'POST',
+          mode: 'no-cors',
+          cache: "no-cache",
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(formData)
         })
