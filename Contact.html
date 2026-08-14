@@ -94,10 +94,16 @@
       document.getElementById('contactForm').addEventListener('submit', function(e) {
         e.preventDefault();
         
+        //get function for each input field
+        const name = document.getElementById('name').value
+        const cost = document.getElementById('cost').value
+        const request = document.getElementById('request').value
+
         const formData = {
-          name: document.getElementById('name').value,
-          cost: document.getElementById('cost').value,
-          request: document.getElementById('request').value
+          name: name,
+          cost: cost,
+          request: request,
+          convertedCost:(parseFloat(cost) * 2.75).toFixed(2) // Convert cost to cards
         };
 
         // Replace with your actual Google Apps Script Deployment URL
