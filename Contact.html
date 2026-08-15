@@ -91,14 +91,6 @@
     </footer>
 
     <script>
-      const submitBtn = document.getElementById('submit');
-
-      submitBtn.addEventListener('click', async () => {
-            // 1. Immediately disable the button to stop rapid clicks
-            submitBtn.disabled = true;
-            submitBtn.textContent = 'Processing...';
-            });
-
       document.getElementById('contactForm').addEventListener('submit', function(e) {
         e.preventDefault();
 
