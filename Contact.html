@@ -92,7 +92,7 @@
 
     <script>
       document.getElementById('contactForm').addEventListener('submit', function(e) {
-        
+        e.preventDefault();
         //get function for each input field
         const name = document.getElementById('name').value
         const cost = document.getElementById('cost').value
