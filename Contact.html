@@ -76,7 +76,7 @@
 
           <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
 
-          <button type="submit">Submit Request</button>
+          <button type="submit" href="./index.html">Submit Request</button>
         </form>
       </div>
     </section>
@@ -91,21 +91,31 @@
     </footer>
 
     <script>
+      const submitBtn = document.getElementById('submit');
+
+      submitBtn.addEventListener('click', async () => {
+            // 1. Immediately disable the button to stop rapid clicks
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Processing...';
+            });
+
       document.getElementById('contactForm').addEventListener('submit', function(e) {
         e.preventDefault();
+
+        
+        
         //get function for each input field
         const name = document.getElementById('name').value
         const cost = document.getElementById('cost').value
         const request = document.getElementById('request').value
+        const convertedCost = (parseFloat(cost) * 2.75).toFixed(2)
 
         const formData = {
           name: name,
           cost: cost,
           request: request,
-          convertedCost:(parseFloat(cost) * 2.75).toFixed(2) // Convert cost to cards
+          convertedCost: convertedCost // Convert cost to cards
         };
-
-        console.log(formData) // For debugging purposes to check data frame. 
 
         // Replace with your actual Google Apps Script Deployment URL
         const apiUrl = 'https://script.google.com/macros/s/AKfycbzOlkUr75MlmwqrLZO97mcHZo1XfSI-BEOzkec7PNmnmXs9wIGyShqq6F_oeGpMkinjEg/exec';
@@ -117,8 +127,10 @@
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(formData)
         })
-        .then(() => alert('Your request has been submitted to Mathnasium! Your center director will collect your cards and process your order.'), console.log('Form submitted successfully.'))
-        .catch(error => console.error('Error:', error));
+        .then(() => alert('Data successfully sent to Your!'))
+        .catch(error => console.error('Error:', error),
+                        submitBtn.disabled = false,
+                        submitBtn.textContent = 'Submit');
       });
     </script>
     
