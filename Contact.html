@@ -129,9 +129,9 @@
         })
         .then(() => {alert('Data successfully sent to Your!');
               location.href = './index.html';})
-        .catch(error => console.error('Error:', error),
-                        submitBtn.disabled = false,
-                        submitBtn.textContent = 'Try Again?');
+        .catch(error => {console.error('Error:', error);
+                        submitBtn.disabled = false;
+                        submitBtn.textContent = 'Try Again?';});
       });
     </script>
     
