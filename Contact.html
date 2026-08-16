@@ -95,10 +95,10 @@
         e.preventDefault();
 
         const botcheck = document.querySelector('input[name="botcheck"]').checked;
-            if (botcheck) {
+          if (botcheck) {
             alert('Bot detected!');
             return; // Don't submit
-            }
+          }
         
         const submitBtn = document.querySelector('button[type="submit"]');
         submitBtn.disabled = true;
